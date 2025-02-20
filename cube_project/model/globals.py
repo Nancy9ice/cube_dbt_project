@@ -3,7 +3,7 @@ from cube_dbt import Dbt
 
 template = TemplateContext()
 
-dbt = Dbt.from_file('../sample_dbt_project/dbt_meetup_project/target/manifest.json').filter(paths=['staging/'])
+dbt = Dbt.from_file('dbt_semantics/manifest.json').filter(paths=['staging/'])
 
 for model in dbt.models:
   print(model.name)
