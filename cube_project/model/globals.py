@@ -4,8 +4,11 @@ import os
 
 template = TemplateContext()
 
-script_dir = os.path.dirname(os.path.realpath(__file__))
-dbt_semantics_path = os.path.join(script_dir, 'dbt_semantics', 'manifest.json')
+# Get the current working directory
+current_dir = os.path.dirname(os.path.realpath(__file__))  # Location of globals.py
+
+# Construct the absolute path to the manifest.json file
+manifest_path = os.path.join(current_dir, 'dbt_semantics', 'manifest.json')
 
 dbt = Dbt.from_file(dbt_semantics_path).filter(paths=['staging/'])
 
