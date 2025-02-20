@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: dbt_meetup_project
+    database: playground_db
+    schema: public
+    tables:
+      - name: customer
+        description: This contains the details of the customers
+      - name: products
+        description: This contains the details of the products
+      - name: orders
+        description: These are records of the product sales

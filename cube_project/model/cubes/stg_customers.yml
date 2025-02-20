@@ -1,0 +1,51 @@
+cubes:
+  - name: stg_customers
+    sql_table: public.stg_customers
+    data_source: default
+
+    joins:
+    - name: stg_customers
+      sql: "{CUBE.customer_key} = {stg_customers.customer_key}"
+      relationship: many_to_one
+
+    dimensions:
+      - name: name
+        sql: name
+        type: string
+
+      - name: birth_date
+        sql: birth_date
+        type: string
+
+      - name: marital_status
+        sql: marital_status
+        type: string
+
+      - name: gender
+        sql: gender
+        type: string
+
+      - name: occupation
+        sql: occupation
+        type: string
+
+      - name: house_owner
+        sql: house_owner
+        type: string
+
+      - name: phone_number
+        sql: phone_number
+        type: string
+
+      - name: date_first_purchase
+        sql: date_first_purchase
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

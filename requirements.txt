@@ -1,0 +1,2 @@
+dbt-postgres==1.9.0
+cube_dbt==0.6.1

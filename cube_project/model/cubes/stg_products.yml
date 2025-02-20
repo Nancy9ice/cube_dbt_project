@@ -1,0 +1,79 @@
+cubes:
+  - name: stg_products
+    sql_table: public.stg_products
+    data_source: default
+
+    joins:
+    - name: stg_products
+      sql: "{CUBE.product_key} = {stg_customers.product_key}"
+      relationship: many_to_one
+
+    dimensions:
+      - name: productline
+        sql: "{CUBE}.\"ProductLine\""
+        type: string
+
+      - name: product_name
+        sql: product_name
+        type: string
+
+      - name: product_subcategory
+        sql: product_subcategory
+        type: string
+
+      - name: product_category
+        sql: product_category
+        type: string
+
+      - name: sell_end_date
+        sql: sell_end_date
+        type: string
+
+      - name: color
+        sql: "{CUBE}.\"Color\""
+        type: string
+
+      - name: class
+        sql: "{CUBE}.\"Class\""
+        type: string
+
+      - name: modelname
+        sql: "{CUBE}.\"ModelName\""
+        type: string
+
+      - name: description
+        sql: "{CUBE}.\"Description\""
+        type: string
+
+      - name: sizerange
+        sql: "{CUBE}.\"SizeRange\""
+        type: string
+
+      - name: status
+        sql: "{CUBE}.\"Status\""
+        type: string
+
+      - name: sell_start_date
+        sql: sell_start_date
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+      - name: standardcost
+        sql: "{CUBE}.\"StandardCost\""
+        type: sum
+
+      - name: listprice
+        sql: "{CUBE}.\"ListPrice\""
+        type: sum
+
+      - name: dealerprice
+        sql: "{CUBE}.\"DealerPrice\""
+        type: sum
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+

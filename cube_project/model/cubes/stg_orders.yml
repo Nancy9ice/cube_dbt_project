@@ -1,0 +1,60 @@
+cubes:
+  - name: stg_orders
+    sql_table: public.stg_orders
+    data_source: default
+
+    joins: []
+
+    dimensions:
+      - name: sales_key
+        sql: sales_key
+        type: string
+
+      - name: ordered_at
+        sql: ordered_at
+        type: string
+
+      - name: order_date
+        sql: order_date
+        type: string
+
+      - name: ship_date
+        sql: ship_date
+        type: string
+
+      - name: sales_order_number
+        sql: sales_order_number
+        type: string
+
+    measures:
+      - name: count
+        type: count
+
+      - name: sales_order_line_number
+        sql: sales_order_line_number
+        type: sum
+
+      - name: quantity_total
+        sql: quantity_total
+        type: sum
+
+      - name: price_total
+        sql: price_total
+        type: sum
+
+      - name: discount_amount_total
+        sql: discount_amount_total
+        type: sum
+
+      - name: product_cost_total
+        sql: product_cost_total
+        type: sum
+
+      - name: revenue_total
+        sql: revenue_total
+        type: sum
+
+    pre_aggregations:
+      # Pre-aggregation definitions go here.
+      # Learn more in the documentation: https://cube.dev/docs/caching/pre-aggregations/getting-started
+
