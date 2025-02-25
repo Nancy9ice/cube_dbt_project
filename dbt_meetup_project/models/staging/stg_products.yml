@@ -3,6 +3,9 @@ models:
     description: products table
     columns: 
       - name: product_key
+        tests:
+          - not_null
+          - unique
       - name: product_name
       - name: product_subcategory
       - name: product_category
@@ -31,7 +34,7 @@ semantic_models:
     description: This table is at the products grain with one row per product
     model: ref('stg_products')
     entities:
-      - name: product
+      - name: products
         type: primary
         expr: product_key
     dimensions:

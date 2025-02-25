@@ -3,6 +3,9 @@ models:
     description: orders table
     columns: 
       - name: sales_key
+        tests:
+          - not_null
+          - unique
       - name: ordered_at
       - name: order_date
       - name: ship_date
@@ -31,10 +34,10 @@ semantic_models:
     entities:
       - name: sales_key
         type: primary
-      - name: customer
+      - name: customers
         type: foreign
         expr: customer_key
-      - name: product
+      - name: products
         type: foreign
         expr: product_key
     measures:
