@@ -3,7 +3,13 @@ cubes:
     sql_table: public.stg_orders
     data_source: default
 
-    joins: []
+    joins: 
+    - name: stg_products
+      sql: "{CUBE.product_key} = {stg_customers.product_key}"
+      relationship: many_to_one
+    - name: stg_customers
+      sql: "{CUBE.customer_key} = {stg_customers.customer_key}"
+      relationship: many_to_one
 
     dimensions:
       - name: sales_key

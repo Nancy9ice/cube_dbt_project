@@ -3,12 +3,17 @@ cubes:
     sql_table: public.stg_customers
     data_source: default
 
-    joins:
-    - name: stg_customers
-      sql: "{CUBE.customer_key} = {stg_customers.customer_key}"
-      relationship: many_to_one
+    joins: []
+    # - name: stg_customers
+    #   sql: "{CUBE.customer_key} = {stg_customers.customer_key}"
+    #   relationship: many_to_one
 
     dimensions:
+      - name: customer_key
+        sql: customer_key
+        type: string
+        primary_key: true
+
       - name: name
         sql: name
         type: string
