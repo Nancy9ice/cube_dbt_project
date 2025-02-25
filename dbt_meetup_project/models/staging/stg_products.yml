@@ -1,0 +1,51 @@
+models:
+  - name: stg_products
+    description: products table
+    columns: 
+      - name: product_key
+      - name: product_name
+      - name: product_subcategory
+      - name: product_category
+      - name: StandardCost
+      - name: Color
+      - name: SafetyStockLevel
+      - name: ListPrice
+      - name: Size
+      - name: SizeRange
+      - name: Weight
+      - name: DaysToManufacture
+      - name: ProductLine
+      - name: DealerPrice
+      - name: Class
+      - name: ModelName
+      - name: Description
+      - name: Status
+      - name: sell_start_date
+      - name: sell_end_date
+
+
+semantic_models:
+  - name: products
+    defaults:
+      agg_time_dimension: sell_start_date
+    description: This table is at the products grain with one row per product
+    model: ref('stg_products')
+    entities:
+      - name: product
+        type: primary
+        expr: product_key
+    dimensions:
+      - name: product_name
+        type: categorical
+      - name: product_subcategory
+        type: categorical
+      - name: product_category
+        type: categorical
+      - name: sell_start_date
+        type: time
+        type_params: 
+          time_granularity: day
+      - name: sell_end_date
+        type: time
+        type_params:
+          time_granularity: day
