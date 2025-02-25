@@ -20,13 +20,13 @@ models:
 
 
 semantic_models:
-  - name: customers
+  - name: stg_customers
     defaults:
       agg_time_dimension: birth_date
     description: This table is at the customers grain with one row per customer
     model: ref('stg_customers')
     entities:
-      - name: customer
+      - name: stg_customers
         type: primary
         expr: customer_key
     dimensions:

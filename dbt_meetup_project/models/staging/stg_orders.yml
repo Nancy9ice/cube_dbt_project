@@ -26,7 +26,7 @@ models:
 
 
 semantic_models:
-  - name: orders
+  - name: stg_orders
     defaults:
       agg_time_dimension: order_date
     description: This table is at the orders grain with one row per order
@@ -34,10 +34,10 @@ semantic_models:
     entities:
       - name: sales_key
         type: primary
-      - name: customers
+      - name: stg_customers
         type: foreign
         expr: customer_key
-      - name: products
+      - name: stg_products
         type: foreign
         expr: product_key
     measures:

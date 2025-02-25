@@ -28,13 +28,13 @@ models:
 
 
 semantic_models:
-  - name: products
+  - name: stg_products
     defaults:
       agg_time_dimension: sell_start_date
     description: This table is at the products grain with one row per product
     model: ref('stg_products')
     entities:
-      - name: products
+      - name: stg_products
         type: primary
         expr: product_key
     dimensions:
