@@ -15,6 +15,7 @@ cubes:
       - name: sales_key
         sql: sales_key
         type: string
+        primary_key: true
 
       - name: ordered_at
         sql: ordered_at
